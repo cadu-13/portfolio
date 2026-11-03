@@ -12,6 +12,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
 <style>
 [hidden]{display:none!important}
+/* tela limpa: elementos decorativos desligados */
+#amb,.logs,.elabel,.dashes,.dashes + .sep,.live-pill,.crumb .path,.loc,.ticker{display:none!important}
+.c-hint{transition:opacity .6s}
+.c-hint.gone{opacity:0;pointer-events:none}
 html{color-scheme:dark}
 
 /* Layout: ferramenta de trabalho. Barra de app no topo, linha de identidade, canvas de nós em moldura própria
@@ -76,7 +80,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--clean);outline-offs
 .id{display:flex;align-items:baseline;gap:4px 16px;flex-wrap:wrap}
 h1{font-family:var(--f-display);font-weight:650;font-size:clamp(30px,2.8vw,42px);line-height:1;letter-spacing:-.03em;margin:0;font-variation-settings:"opsz" 96}
 .id p{margin:0;color:var(--fg2);font-size:14.5px}
-.lede{margin:0;max-width:52ch;color:var(--fg2);font-size:15px}
+.lede{margin:0;color:var(--fg2);font-size:15px;white-space:nowrap}
+@media (max-width:1180px){.lede{white-space:normal;max-width:52ch}}
 mark{background:none;color:var(--fg);font-weight:500;box-shadow:inset 0 -.42em 0 color-mix(in srgb,var(--c) 26%,transparent)}
 .loc{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin:0;white-space:nowrap}
 
@@ -493,7 +498,7 @@ h2 em{font-style:normal;box-shadow:inset 0 -.36em 0 color-mix(in srgb,var(--raw)
       <a href="#inicio" id="tab-inicio" aria-current="page">Workflow</a>
       <a href="#cases" id="tab-cases">Cases</a>
     </nav>
-    <div class="ext"><a href="https://www.linkedin.com/in/carlossilva-" target="_blank" rel="noopener">LinkedIn ↗</a><a href="#" class="ph">GitHub ↗</a><button type="button" class="cta" id="contact">Contato</button></div>
+    <div class="ext"><a href="https://www.linkedin.com/in/carlossilva-" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://github.com/cadu-13" target="_blank" rel="noopener">GitHub ↗</a><a href="https://wa.me/5531993796862" target="_blank" rel="noopener">WhatsApp ↗</a><button type="button" class="cta" id="contact">Contato</button></div>
   </header>
 
   <section class="hero" aria-label="Apresentação">
@@ -595,7 +600,7 @@ h2 em{font-style:normal;box-shadow:inset 0 -.36em 0 color-mix(in srgb,var(--raw)
   const fmtH = v => String(v).replace('.', ',');
   const SCENE = [
     { h: 'POST /visita', tag: '200 OK', body: () => `<pre class="ty" id="ty"></pre>`, foot: '✓ workflow iniciado', fd: 2.6,
-      run: el => typeJSON(el.querySelector('#ty'), { evento: 'visita', origem: 'linkedin', interesse: 'dados + finanças + IA', hora: hhmm }) },
+      run: el => typeJSON(el.querySelector('#ty'), { evento: 'visita', saudacao: GREET.toLowerCase(), interesse: 'dados + finanças + IA', hora: hhmm }) },
     { h: 'extract · fontes', tag: 'lendo', body: () => files(['pos_hiperautomacao_puc-minas.pdf', 'economia_unibh.pdf', 'tecnico_ti_cotemig.pdf', 'certificacoes_pipefy_lovable_sql.pdf']), foot: '3 formações + 4 certificações extraídas', fd: 2.2 },
     { h: 'transform · primeiros relatórios', tag: 'rodando', body: () => trRows([['export bruto do SAP', 'dados tratados'], ['pedido por e-mail', 'consulta SQL'], ['Excel solto', 'painel Power BI'], ['relatório manual', 'Reporting Services']]), foot: 'dados virando decisão no comercial', fd: 2.0 },
     { h: 'transform · DRE do grupo', tag: 'rodando', body: () => trRows([['planilhas isoladas', 'base única'], ['API do Omie', 'modelo de dados'], ['receita YouTube.csv', 'receita validada'], ['=SOMA(B2:B90)', 'DRE no Power BI']]), foot: 'DRE construída do zero · controladoria', fd: 2.0 },
@@ -668,10 +673,11 @@ h2 em{font-style:normal;box-shadow:inset 0 -.36em 0 color-mix(in srgb,var(--raw)
         <div class="io"><div class="in"><span class="lab">entrada</span>${o.in}</div><div class="arrow" aria-hidden="true">↓</div><div class="out"><span class="lab">saída</span>${o.out}</div></div>
         <ul class="bul">${o.bul.map(b => `<li>${b}</li>`).join('')}</ul>
         <div class="chips tags">${o.chips.map(c => `<span class="chip${c === 'IA' || c === 'Lovable' ? ' ai' : ''}">${c}</span>`).join('')}</div>`;
+  const HR = new Date().getHours(), GREET = HR < 5 ? 'Boa noite' : HR < 12 ? 'Bom dia' : HR < 18 ? 'Boa tarde' : 'Boa noite';
   const S = [
     { type: 'Trigger', node: 'Visitante chegou', sub: 'trigger · on page load', icon: 'bolt', tint: RAWC, trigger: true,
-      html: () => `<p class="sub">Quem sou</p><h2>Prazer, sou <em>Carlos Eduardo</em></h2>
-        <p class="txt">Economista com formação técnica em Informática e pós-graduação em Automação de Processos e Hiperautomação pela PUC Minas. Trabalho na interseção entre finanças, dados, automação e IA, transformando processos financeiros manuais em soluções integradas, rápidas e confiáveis.</p>
+      html: () => `<p class="sub">Quem sou</p><h2>${GREET}, <em>seja bem-vindo!</em></h2>
+        <p class="txt">Eu sou o Carlos Eduardo, economista com formação técnica em Informática e pós-graduação em Automação de Processos e Hiperautomação pela PUC Minas. Trabalho na interseção entre finanças, dados, automação e IA, transformando processos financeiros manuais em soluções integradas, rápidas e confiáveis.</p>
         <table class="fields"><tr><th>cargo</th><td>Analista Financeiro Sênior · Dados, IA e Automação</td></tr><tr><th>empresa</th><td>EstrelaBet</td></tr><tr><th>especialidade</th><td>Dados + automação + IA</td></tr><tr><th>base</th><td>Belo Horizonte, MG</td></tr><tr><th>status</th><td><span class="pill">aberto a conversas</span></td></tr></table>`,
       json: { nome: 'Carlos Eduardo G. da Silva', cargo: 'Analista Financeiro Sênior | Dados, IA e Automação de Processos', empresa: 'EstrelaBet', base: 'Belo Horizonte, MG', especialidade: ['dados', 'automação', 'IA', 'finanças'] } },
     { type: 'Extract', node: 'Formação', sub: 'extract · 7 fontes', icon: 'extract', tint: RAWC,
@@ -748,10 +754,10 @@ h2 em{font-style:normal;box-shadow:inset 0 -.36em 0 color-mix(in srgb,var(--raw)
       json: { horas_eliminadas_semana: '80+', importacao_nfs_horas_semana: 44, lancamento_extratos_horas_dia: 4, programacao_pagamentos_horas_dia: 1.5, cruzamento_pos_horas_dia: 1.25, atualizacao_painel: 'a cada hora' } },
     { type: 'Output', node: 'Contato', sub: 'output · e-mail', icon: 'send', tint: FG,
       html: () => `<p class="sub">Próximo passo</p><h2>Vamos <em>conversar?</em></h2>
-        <p class="txt">Estou aberto a oportunidades em dados, automação e IA aplicada a finanças. O caminho mais rápido é o e-mail.</p>
+        <p class="txt">Estou aberto a oportunidades em dados, automação e IA aplicada a finanças. O caminho mais rápido é o e-mail ou o WhatsApp.</p>
         <div class="mail"><span class="email" id="email">contato.carloseg@gmail.com</span><button type="button" class="btn" data-copy>Copiar e-mail</button></div>
-        <div class="row"><a class="btn ghost" href="https://www.linkedin.com/in/carlossilva-" target="_blank" rel="noopener">LinkedIn ↗</a><a class="btn ghost ph" href="#">GitHub ↗</a><a class="btn ghost" href="#cases">Ver cases →</a></div>`,
-      json: { email: 'contato.carloseg@gmail.com', linkedin: 'linkedin.com/in/carlossilva-', base: 'Belo Horizonte, MG', disponivel: true } }
+        <div class="row"><a class="btn ghost" href="https://www.linkedin.com/in/carlossilva-" target="_blank" rel="noopener">LinkedIn ↗</a><a class="btn ghost" href="https://wa.me/5531993796862" target="_blank" rel="noopener">WhatsApp ↗</a><a class="btn ghost" href="https://github.com/cadu-13" target="_blank" rel="noopener">GitHub ↗</a><a class="btn ghost" href="#cases">Ver cases →</a></div>`,
+      json: { email: 'contato.carloseg@gmail.com', linkedin: 'linkedin.com/in/carlossilva-', whatsapp: '+55 31 99379-6862', github: 'github.com/cadu-13', base: 'Belo Horizonte, MG', disponivel: true } }
   ];
   const N = S.length, NW = 208, NH = 70, GAP = 300;
   const YS = [0, -120, 10, -100, 70, -40, 60, -70, 30, -20];
@@ -1209,6 +1215,7 @@ h2 em{font-style:normal;box-shadow:inset 0 -.36em 0 color-mix(in srgb,var(--raw)
   }
 
   function go(i) {
+    document.querySelector('.c-hint')?.classList.add('gone');
     i = Math.max(0, Math.min(N - 1, i));
     endBoot();
     if (overview) { overview = false; world.classList.remove('over'); $('main').classList.remove('over'); $('map').setAttribute('aria-pressed', false); }
@@ -1379,7 +1386,7 @@ h2 em{font-style:normal;box-shadow:inset 0 -.36em 0 color-mix(in srgb,var(--raw)
   renderPanel(1); route(); ambSize();
   new ResizeObserver(() => { if ($('cases').hidden) { fitChar(); if (!anim) placeChar(cur); ambSize(); camera(); } }).observe(stage);
   if (reduce) { paintStates(true); renderLog(false); showScene(0); placeChar(0); charEl.classList.add('on'); ambDraw(0); }
-  else { boot(); ambRaf = requestAnimationFrame(ambDraw); }
+  else { boot(); }
   document.addEventListener('visibilitychange', () => { if (document.hidden) { cancelAnimationFrame(ambRaf); ambRaf = null; } else if (!reduce && !ambRaf) ambRaf = requestAnimationFrame(ambDraw); });
 })();
 </script>
