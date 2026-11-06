@@ -439,6 +439,17 @@ h2 em{font-style:normal;box-shadow:inset 0 -.36em 0 color-mix(in srgb,var(--raw)
 @keyframes tick{to{transform:translateX(-50%)}}
 
 /* aba cases */
+.feat{margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px;display:grid;gap:12px}
+.feat-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.ok-pill{color:var(--clean);background:color-mix(in srgb,var(--clean) 12%,transparent);padding:2px 9px;border-radius:999px}
+.feat h3{margin:0;font-family:var(--f-display);font-size:24px;font-weight:620;letter-spacing:-.02em;line-height:1.2}
+.feat-lede{margin:0;color:var(--fg2);max-width:70ch}
+.feat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 28px;border-top:1px solid var(--line);padding-top:6px}
+.feat-grid div{padding:10px 0}
+.feat-grid b{font-weight:600;font-size:14px}
+.feat-grid p{margin:4px 0 0;color:var(--fg2);font-size:14px;line-height:1.5}
+@media (max-width:700px){.feat-grid{grid-template-columns:minmax(0,1fr)}}
+
 .cases{min-height:0;overflow:auto;padding-block:8px 24px}
 .cases[hidden]{display:none!important}
 .cases-in{max-width:1080px}
@@ -540,15 +551,22 @@ h2 em{font-style:normal;box-shadow:inset 0 -.36em 0 color-mix(in srgb,var(--raw)
 
   <section class="cases" id="cases" hidden aria-label="Cases">
     <div class="cases-in">
-      <p class="sub">Cases · em construção</p>
+      <p class="sub">Cases</p>
       <h2>Projetos de <em>ponta a ponta</em></h2>
-      <p class="txt">Cada case parte de um problema real do financeiro e mostra o fluxo completo: dado bruto, automação, IA quando faz sentido, e o resultado. Código no GitHub e demo navegável.</p>
-      <div class="cgrid">
-        <article class="case"><div class="case-top"><span>Oracle · APIs · IA</span><span class="st">em construção</span></div><h3>Painel financeiro integrado ao ERP</h3><p>Lançamento automático de NFs e extratos, status de pagamentos em tempo quase real. Reconstruído com dados sintéticos.</p></article>
-        <article class="case"><div class="case-top"><span>Lovable · SQL</span><span class="st">em construção</span></div><h3>Conciliador banco × intermediadora</h3><p>Milhões de transações cruzadas entre as duas pontas, com divergências viradas em alerta.</p></article>
-        <article class="case"><div class="case-top"><span>Power BI · API Omie</span><span class="st">em construção</span></div><h3>DRE do zero no Power BI</h3><p>De planilhas isoladas a uma visão financeira consolidada do grupo.</p></article>
-        <article class="case"><div class="case-top"><span>Pipefy · Workato · Slack</span><span class="st">em construção</span></div><h3>Fluxos do financeiro integrados</h3><p>Aprovação no Pipefy, lançamento no ERP e aviso no Slack, sem copiar e colar.</p></article>
-      </div>
+      <p class="txt">Cada case mostra o problema, as decisões técnicas e o resultado. Novos projetos entram aqui em breve, sempre com dados fictícios.</p>
+      <article class="feat">
+        <div class="feat-top"><span>HTML · JavaScript · Three.js · gltfpack</span><span class="ok-pill">no ar</span></div>
+        <h3>Este portfólio: a carreira como um workflow</h3>
+        <p class="feat-lede">Em vez de um currículo em página, a trajetória vira um fluxo de automação: cada etapa é um nó executado em sequência, com um personagem 3D que percorre o caminho.</p>
+        <div class="feat-grid">
+          <div><b>Problema</b><p>Mostrar dados, automação e IA de um jeito que um recrutador entenda em segundos, sem virar mais um site de texto.</p></div>
+          <div><b>Solução</b><p>Página única em que a rolagem executa o próximo nó. Cada etapa tem uma cena animada e um painel com a versão em JSON dos mesmos dados.</p></div>
+          <div><b>Decisões técnicas</b><p>Modelo 3D gerado por IA e otimizado de 25 MB para 1,2 MB. Esqueleto de 11 ossos e animações de caminhar e acenar criados no próprio código, sem ferramentas pagas.</p></div>
+          <div><b>Stack</b><p>HTML, CSS e JavaScript puro, Three.js, compressão meshopt. Publicado na Vercel com deploy automático a cada commit.</p></div>
+        </div>
+        <div class="row"><a class="btn" href="https://github.com/cadu-13/portfolio" target="_blank" rel="noopener">Ver código ↗</a><a class="btn ghost" href="#inicio">Ver o workflow →</a></div>
+      </article>
+      <p class="note">Próximos cases em preparação: radar de vagas, carteira de investimentos e análise de treinos e dieta.</p>
     </div>
   </section>
 
