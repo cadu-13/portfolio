@@ -71,6 +71,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--clean);outline-offs
 .ext{display:flex;align-items:center;gap:16px}
 .ext a{color:var(--muted);text-decoration:none;font-size:13.5px}
 .ext a:hover{color:var(--fg)}
+.ext a.cvlink{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:8px;padding:5px 12px;color:var(--fg);font-size:13px}
+.ext a.cvlink:hover{border-color:var(--fg)}
+@media (max-width:520px){.ext a.cvlink{display:none}}
 .cta{border:0;background:var(--fg);color:var(--surface);border-radius:8px;padding:6px 14px;font-size:13px;font-weight:500;cursor:pointer}
 .cta:hover{background:var(--clean)}
 
@@ -509,7 +512,7 @@ h2 em{font-style:normal;box-shadow:inset 0 -.36em 0 color-mix(in srgb,var(--raw)
       <a href="#inicio" id="tab-inicio" aria-current="page">Workflow</a>
       <a href="#cases" id="tab-cases">Cases</a>
     </nav>
-    <div class="ext"><a href="https://www.linkedin.com/in/carlossilva-" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://github.com/cadu-13" target="_blank" rel="noopener">GitHub ↗</a><a href="https://wa.me/5531993796862" target="_blank" rel="noopener">WhatsApp ↗</a><button type="button" class="cta" id="contact">Contato</button></div>
+    <div class="ext"><a href="https://www.linkedin.com/in/carlossilva-" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://github.com/cadu-13" target="_blank" rel="noopener">GitHub ↗</a><a href="https://wa.me/5531993796862" target="_blank" rel="noopener">WhatsApp ↗</a><a class="cvlink" href="assets/Carlos-Eduardo-Curriculo.pdf" target="_blank" rel="noopener">Currículo ↓</a><button type="button" class="cta" id="contact">Contato</button></div>
   </header>
 
   <section class="hero" aria-label="Apresentação">
@@ -774,8 +777,8 @@ h2 em{font-style:normal;box-shadow:inset 0 -.36em 0 color-mix(in srgb,var(--raw)
       html: () => `<p class="sub">Próximo passo</p><h2>Vamos <em>conversar?</em></h2>
         <p class="txt">Estou aberto a oportunidades em dados, automação e IA aplicada a finanças. O caminho mais rápido é o e-mail ou o WhatsApp.</p>
         <div class="mail"><span class="email" id="email">contato.carloseg@gmail.com</span><button type="button" class="btn" data-copy>Copiar e-mail</button></div>
-        <div class="row"><a class="btn ghost" href="https://www.linkedin.com/in/carlossilva-" target="_blank" rel="noopener">LinkedIn ↗</a><a class="btn ghost" href="https://wa.me/5531993796862" target="_blank" rel="noopener">WhatsApp ↗</a><a class="btn ghost" href="https://github.com/cadu-13" target="_blank" rel="noopener">GitHub ↗</a><a class="btn ghost" href="#cases">Ver cases →</a></div>`,
-      json: { email: 'contato.carloseg@gmail.com', linkedin: 'linkedin.com/in/carlossilva-', whatsapp: '+55 31 99379-6862', github: 'github.com/cadu-13', base: 'Belo Horizonte, MG', disponivel: true } }
+        <div class="row"><a class="btn" href="assets/Carlos-Eduardo-Curriculo.pdf" target="_blank" rel="noopener">Baixar currículo ↓</a><a class="btn ghost" href="https://www.linkedin.com/in/carlossilva-" target="_blank" rel="noopener">LinkedIn ↗</a><a class="btn ghost" href="https://wa.me/5531993796862" target="_blank" rel="noopener">WhatsApp ↗</a><a class="btn ghost" href="https://github.com/cadu-13" target="_blank" rel="noopener">GitHub ↗</a><a class="btn ghost" href="#cases">Ver cases →</a></div>`,
+      json: { email: 'contato.carloseg@gmail.com', linkedin: 'linkedin.com/in/carlossilva-', whatsapp: '+55 31 99379-6862', github: 'github.com/cadu-13', base: 'Belo Horizonte, MG', disponivel: true, curriculo: 'assets/Carlos-Eduardo-Curriculo.pdf' } }
   ];
   const N = S.length, NW = 208, NH = 70, GAP = 300;
   const YS = [0, -120, 10, -100, 70, -40, 60, -70, 30, -20];
