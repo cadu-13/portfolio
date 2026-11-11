@@ -15,8 +15,9 @@ Publicado na Vercel (deploy automático a partir da `main`): https://portfolio-c
 - Ao concluir qualquer tarefa ou funcionalidade:
   1. Atualizar o "Status Atual" abaixo (máx. 5 linhas), substituindo o conteúdo — o histórico fica no git log.
   2. Rodar testes/linter se existirem; senão, validar abrindo a página (Playwright/screenshot).
-  3. Criar um commit atômico em Conventional Commits (ex.: `feat: adiciona login`) e dar push (o container da sessão é descartável).
-- Push na `main` publica na Vercel: mudanças grandes/arriscadas vão para uma branch e o Carlos decide quando publicar.
+  3. Criar um commit atômico em Conventional Commits (ex.: `feat: adiciona login`) e dar push automaticamente numa branch de trabalho (o container da sessão é descartável) — sem pedir confirmação.
+- Push na `main` publica na Vercel: SEMPRE perguntar ao Carlos antes de levar mudanças do site para a `main`.
+- Exceção: mudanças que não afetam o site (CLAUDE.md, README) podem ir direto para a `main`.
 - Nunca apagar regras deste arquivo; apenas atualizar o bloco de status.
 
 ## Status Atual
