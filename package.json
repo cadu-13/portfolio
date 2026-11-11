@@ -1,0 +1,19 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Portfólio de Carlos Eduardo G. da Silva, Analista Sênior de Dados e Automação em Finanças.",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "portfolio",
+    "data-analytics",
+    "automation"
+  ],
+  "author": "Carlos Eduardo G. da Silva",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/analytics": "^1.1.1"
+  }
+}
